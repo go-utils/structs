@@ -2,8 +2,7 @@
 structure utils
 
 # What is this?
-Look for struct fields that are nil.
-Used when the argument passed to the constructor etc. is a structure etc.
+Provides convenience functions on structures.  
 
 # Usage
 
