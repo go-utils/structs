@@ -150,3 +150,40 @@ func TestGetNilFields(t *testing.T) {
 		})
 	}
 }
+
+func TestGetStructName(t *testing.T) {
+	var testStruct struct{}
+	type args struct {
+		obj any
+	}
+	tests := []struct {
+		args args
+		want string
+	}{
+		{
+			args: args{
+				obj: Example1{},
+			},
+			want: "Example1",
+		},
+		{
+			args: args{
+				obj: Case1{},
+			},
+			want: "Case1",
+		},
+		{
+			args: args{
+				obj: testStruct,
+			},
+			want: "",
+		},
+	}
+	for _, tt := range tests {
+		t.Run("", func(t *testing.T) {
+			if got := GetStructName(tt.args.obj); got != tt.want {
+				t.Errorf("GetStructName() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
